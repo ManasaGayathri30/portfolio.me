@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manasa Gayathri - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Manasa Gayathri</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Welcome to my portfolio!</h2>
+            <p>I'm a cybersecurity student passionate about innovation and quick learning.</p>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>Aaviskar Hackathon</h3>
+                <p>Description: Participated in Aaviskar Hackathon and developed a drone-based surveillance system for highways.</p>
+                <p>Technologies Used: Drone Technology</p>
+            </div>
+            <div class="project">
+                <h3>Gennovate</h3>
+                <p>Description: Participated in Gennovate and contributed to [brief description of the project].</p>
+                <p>Technologies Used: Drone Technology</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <h2>Achievements</h2>
+            <p>Titled as the best presenter at International Student Research Conference by Westford University Dubai.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <form id="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Manasa Gayathri. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission
+        document.getElementById("contact-form").addEventListener("submit", function(event){
+            event.preventDefault();
+            var formData = new FormData(this);
+            fetch("submit_form.py", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => {
+                if(response.ok) {
+                    alert("Message sent successfully!");
+                    document.getElementById("contact-form").reset();
+                } else {
+                    alert("Message failed to send. Please try again later.");
+                }
+            })
+            .catch(error => {
+                alert("An error occurred. Please try again later.");
+            });
+        });
+    </script>
+</body>
+</html>
